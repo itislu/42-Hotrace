@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aapenko <aapenko@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lbapart <lbapart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 20:56:36 by lbapart           #+#    #+#             */
-/*   Updated: 2023/10/13 21:23:58 by aapenko          ###   ########.fr       */
+/*   Updated: 2023/10/13 22:12:35 by lbapart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "hotrace.h"
+
+int	ft_strlen(char *str)
+{
+	int i;
+
+	i = 0;
+	while(str[i])
+		i++;
+	return (i);
+}
 
 char	*ft_realloc(char *old_buf, char c)
 {
@@ -49,7 +59,7 @@ char	*get_next_line(int fd)
 	char	c;
 	char	*buffer;
 
-	buffer = (char *)malloc(1);
+	buffer = (char *)malloc(100000);
 	if (!buffer)
 		return (NULL);
 	buffer[0] = '\0';
@@ -57,7 +67,7 @@ char	*get_next_line(int fd)
 	read_bytes = 1;
 	while (read_bytes > 0)
 	{
-		read_bytes = read(fd, &c, 1);
+		read_bytes = read(fd, &buffer, 1);
 		if (read_bytes == -1)
 			return (free(buffer), NULL);
 		else if (read_bytes == 0)
