@@ -6,7 +6,7 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 20:56:36 by lbapart           #+#    #+#             */
-/*   Updated: 2023/10/14 12:45:35 by ldulling         ###   ########.fr       */
+/*   Updated: 2023/10/14 13:19:10 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ char	*read_out(int fd, int *result)
 	int		i;
 	int		read_bytes;
 	int		total;
-	char	*buffer;
+	static char	*buffer;
 
-	buffer = (char *) malloc(BUFFERSIZE);
+	buffer = (char *) ft_realloc(BUFFERSIZE, ft_strlen(buffer));
 	if (!buffer)
 		return (set_result(result, MALLOC_ERR), NULL);
 	i = 0;
@@ -61,7 +61,7 @@ char	*read_out(int fd, int *result)
 		read_bytes = read(fd, buffer + total, BUFFERSIZE);
 		total += read_bytes;
 		if (read_bytes == -1)
-			return (set_result(result, FD_ERR) ,free(buffer), NULL);
+			return (set_result(result, FD_ERR), free(buffer), NULL);
 		else if (set_result(result, NOT_END_FILE) && read_bytes < BUFFERSIZE)
 		{
 			set_result(result, END_FILE);
