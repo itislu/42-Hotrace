@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hotrace.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbapart <lbapart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aapenko <aapenko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:17:46 by ldulling          #+#    #+#             */
-/*   Updated: 2023/10/14 14:45:22 by lbapart          ###   ########.fr       */
+/*   Updated: 2023/10/14 19:45:36 by aapenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ typedef struct		s_list
 void	*ft_calloc(int bytes);
 char	*read_out(int fd, int *result);
 char	*get_next_line(int fd);
+// utils.c
 int ft_strlen(char *str);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 #endif
