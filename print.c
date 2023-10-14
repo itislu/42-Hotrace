@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aapenko <aapenko@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 20:04:27 by aapenko           #+#    #+#             */
-/*   Updated: 2023/10/14 20:43:46 by aapenko          ###   ########.fr       */
+/*   Updated: 2023/10/14 23:25:16 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_value(char *str, char *temp)
 {
-	int i;
+	int	i;
 
 	if (!str)
 	{

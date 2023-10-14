@@ -1,9 +1,20 @@
-#include "hotrace.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/14 23:20:33 by ldulling          #+#    #+#             */
+/*   Updated: 2023/10/14 23:35:27 by ldulling         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "hotrace.h"
 
 void	init_dict(t_list *dict)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < BUFFER_SIZE)
@@ -15,7 +26,7 @@ void	init_dict(t_list *dict)
 	}
 }
 
-void	hotrace(t_list *dict, int is_search, int count)
+void	hotrace(t_list *dict, int is_search, int *count)
 {
 	char	*temp;
 	char	*key;
@@ -27,11 +38,11 @@ void	hotrace(t_list *dict, int is_search, int count)
 			break ;
 		if (ft_strncmp(temp, "\n", 2) == 0 && is_search == 1)
 			print_value(NULL, temp);
-		else if (ft_strncmp(temp, "\n", 2) == 0 && count % 2 == 0)
+		else if (ft_strncmp(temp, "\n", 2) == 0 && *count % 2 == 0)
 			is_search = 1;
 		else if (ft_strncmp(temp, "\n", 2) == 0)
 			put_key_and_val(key, temp, BUFFER_SIZE, dict);
-		else if (is_search == 0 && count % 2 == 1)
+		else if (is_search == 0 && *count % 2 == 1)
 			put_key_and_val(key, temp, BUFFER_SIZE, dict);
 		else if (is_search == 0)
 			key = temp;
@@ -40,17 +51,45 @@ void	hotrace(t_list *dict, int is_search, int count)
 			key = get_value_from_key(temp, BUFFER_SIZE, dict);
 			print_value(key, temp);
 		}
-		count++;
+		(*count)++;
 	}
 }
 
-int main(void)
+void	free_all(t_list *dict)
 {
+	int		i;
+	t_list	*current;
+	t_list	*temp;
+
+	i = 0;
+	while (i < BUFFER_SIZE)
+	{
+		current = &dict[i];
+		while (current)
+		{
+			temp = current;
+			current = current->next;
+			if (temp->key)
+				free(temp->key);
+			if (temp->value)
+				free(temp->value);
+			free(temp);
+		}
+		i++;
+	}
+	free(dict);
+}
+
+int	main(void)
+{
+	int		count;
 	t_list	*dict;
 
 	dict = (t_list *)malloc(sizeof(t_list) * BUFFER_SIZE);
 	if (!dict)
 		return (1);
+	count = 0;
 	init_dict(dict);
-	hotrace(dict, 0, 0);
+	hotrace(dict, 0, &count);
+	//free_all(dict);
 }

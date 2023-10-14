@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hash.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aapenko <aapenko@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 21:49:28 by lbapart           #+#    #+#             */
-/*   Updated: 2023/10/14 21:35:34 by aapenko          ###   ########.fr       */
+/*   Updated: 2023/10/14 23:34:52 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,45 +22,44 @@
 // 	return (h % max);
 // }
 
-unsigned int hash(const char *str, int max) 
+unsigned int	hash(const char *str, int max)
 {
-    unsigned long hash;
-	int c;
+	unsigned long	hash;
 
 	hash = 5381;
-    while ((c = *str++)) {
-        hash = ((hash << 5) + hash) + c;
-    }
-
-    return hash % max;
+	while (*str)
+	{
+		hash = ((hash << 5) + hash) + *str;
+		str++;
+	}
+	return (hash % max);
 }
 
 int	put_key_and_val(char *key, char *value, int max, t_list *array)
 {
-	unsigned int index;
+	unsigned int	index;
+	t_list			*temp;
 
 	index = hash(key, max);
-	printf("%d\n", index);
 	if (!array[index].key)
 		assign_node(&array[index], key, value);
 	else
 	{
-		t_list *tmp;
-		tmp = (t_list *)malloc(sizeof(t_list));
-		if (!tmp)
+		temp = (t_list *)malloc(sizeof(t_list));
+		if (!temp)
 			return (free(key), free(value), 0);
-		assign_node(tmp, key, value);
-		tmp->next = &array[index];
-		array[index] = *tmp;
+		assign_node(temp, key, value);
+		temp->next = &array[index];
+		array[index] = *temp;
 	}
 	return (1);
 }
 
-int		find_in_keys(char *str, t_list *node)
+int	find_in_keys(char *str, t_list *node)
 {
-	int len;
-	int	i;
-	t_list *temp;
+	int		len;
+	int		i;
+	t_list	*temp;
 
 	i = 0;
 	len = ft_strlen(str);
@@ -77,10 +76,10 @@ int		find_in_keys(char *str, t_list *node)
 
 char	*get_value_from_key(char *str, int max, t_list *array)
 {
-	int	index;
-	int val_index;
-	t_list *temp;
-	int i;
+	int		index;
+	int		val_index;
+	t_list	*temp;
+	int		i;
 
 	index = hash(str, max);
 	if (array[index].key)
@@ -90,11 +89,10 @@ char	*get_value_from_key(char *str, int max, t_list *array)
 		{
 			i = 0;
 			temp = &array[index];
-			while (i++ < val_index)	
+			while (i++ < val_index)
 			{
 				temp = temp->next;
 			}
-			// printf("%s\n", temp->next->value);
 			return (temp->value);
 		}
 	}
