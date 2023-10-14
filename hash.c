@@ -6,7 +6,7 @@
 /*   By: lbapart <lbapart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 21:49:28 by lbapart           #+#    #+#             */
-/*   Updated: 2023/10/13 22:03:43 by lbapart          ###   ########.fr       */
+/*   Updated: 2023/10/14 01:24:21 by lbapart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,17 @@ unsigned int hash(char *str, int max)
 		h = (h << 4) + *str++;
 	return (h % max);
 }
+
+// unsigned long hash(const char *str) {
+//     unsigned long hash = 5381;
+//     int c;
+
+//     while ((c = *str++)) {
+//         hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+//     }
+
+//     return hash;
+// }
 
 int	put_in_array(char *key, char *value, int max, t_list *array)
 {

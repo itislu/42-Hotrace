@@ -17,10 +17,10 @@ int	main(void)
 		return (1);
 	}
 	result = 0;
-	output = read_out(fd, &result);
+	output = get_next_line(fd);
 	while (output && result == 0)
 	{
-		output = read_out(fd, &result);
+		output = get_next_line(fd);
 		// check_result
 		// parse_output
 		printf("%s", output);
