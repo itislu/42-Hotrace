@@ -1,5 +1,4 @@
 #include "hotrace.h"
-
 #include <fcntl.h>
 #include <stdio.h>
 int	main(void)
@@ -39,3 +38,4 @@ int	main(void)
 	free(output);
 	(void) close(fd);
 }
+
