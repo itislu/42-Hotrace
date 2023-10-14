@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+         #
+#    By: aapenko <aapenko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 12:48:32 by ldulling          #+#    #+#              #
-#    Updated: 2023/10/14 19:29:47 by ldulling         ###   ########.fr        #
+#    Updated: 2023/10/14 20:37:01 by aapenko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,13 @@ I				=			./
 D				=			build/dep/
 O				=			build/obj/
 
-SRC				=			ft_calloc.c \
-							get_next_line.c \
-							utils.c \
+SRC				=			get_next_line.c \
+							get_next_line_2.c \
+							hash.c \
+							lst_utils.c \
 							main.c \
-							read_out.c \
+							print.c \
+							utils.c
 
 CC				=			cc
 CFLAGS			=			-Wall -Wextra -Werror $(foreach X,$I,-I$(X))

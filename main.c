@@ -1,47 +1,56 @@
 #include "hotrace.h"
-#include <fcntl.h>
-#include <stdio.h>
-int	main(void)
-{
-	int		fd;
-	int		output_len;
-	char	*output;
-	int result;
 
-	fd = open("tests/testfile.htr", O_RDONLY);
-	fd = 1;
-	printf("fd: %i\n", fd);
-	if (fd == -1)
+
+void	init_dict(t_list *dict)
+{
+	int i;
+
+	i = 0;
+	while (i < BUFFER_SIZE)
 	{
-		printf("open failed\n");
-		return (1);
+		dict[i].key = NULL;
+		dict[i].value = NULL;
+		dict[i].next = NULL;
+		i++;
 	}
-	result = 0;
-	output = get_next_line(fd);
-	printf("%s", output);
-	while (output && result == 0)
-	{
-		if (output)
-		{
-			free(output);
-			output = NULL;
-		}
-		output = get_next_line(fd);
-		// check_result
-		// parse_output
-		printf("%s", output);
-	}
-	printf("%s\n", output);
-	if (!output)
-	{
-		printf("read_out failed\n");
-		return ((void) close(fd), 2);
-	}
-	printf("--------------------------------------------------\n");
-	output_len = printf("output:\n%s\n", output);
-	printf("--------------------------------------------------\n");
-	printf("output_len: %i\n", output_len);
-	free(output);
-	(void) close(fd);
 }
 
+void	hotrace(t_list *dict, int is_search, int count)
+{
+	char	*temp;
+	char	*key;
+
+	while (1)
+	{
+		temp = get_next_line(FD);
+		if (!temp)
+			break ;
+		if (ft_strncmp(temp, "\n", 2) == 0 && is_search == 1)
+			print_value(NULL, temp);
+		else if (ft_strncmp(temp, "\n", 2) == 0 && count % 2 == 0)
+			is_search = 1;
+		else if (ft_strncmp(temp, "\n", 2) == 0)
+			put_key_and_val(key, temp, BUFFER_SIZE, dict);
+		else if (is_search == 0 && count % 2 == 1)
+			put_key_and_val(key, temp, BUFFER_SIZE, dict);
+		else if (is_search == 0)
+			key = temp;
+		else if (is_search == 1)
+		{
+			key = get_value_from_key(temp, BUFFER_SIZE, dict);
+			print_value(key, temp);
+		}
+		count++;
+	}
+}
+
+int main(void)
+{
+	t_list	*dict;
+
+	dict = (t_list *)malloc(sizeof(t_list) * BUFFER_SIZE);
+	if (!dict)
+		return (1);
+	init_dict(dict);
+	hotrace(dict, 0, 0);
+}

@@ -1,1 +1,0 @@
-int	parse_output(char **output, int *result, )

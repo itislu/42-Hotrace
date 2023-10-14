@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aapenko <aapenko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 16:02:33 by ldulling          #+#    #+#             */
-/*   Updated: 2023/10/14 11:44:51 by ldulling         ###   ########.fr       */
+/*   Created: 2023/10/14 20:04:27 by aapenko           #+#    #+#             */
+/*   Updated: 2023/10/14 20:43:46 by aapenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hotrace.h"
 
-void	*ft_calloc(int bytes)
+void	print_value(char *str, char *temp)
 {
-	unsigned char	*ptr;
-	int		i;
+	int i;
 
-	ptr = (unsigned char *) malloc(bytes);
-	if (!ptr)
-		return (NULL);
+	if (!str)
+	{
+		write(1, temp, ft_strlen(temp) - 1);
+		write(1, ": Not found.\n", 13);
+		return ;
+	}
 	i = 0;
-	while (i < bytes)
-		ptr[i++] = '\0';
-	return ((void *) ptr);
+	while (str[i])
+		write(1, &str[i++], 1);
 }
