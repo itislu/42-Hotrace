@@ -18,7 +18,7 @@ int	main(void)
 	}
 	result = 0;
 	output = read_out(fd, &result);
-	while (output && result == 0)
+	while (output && result == NOT_END_FILE)
 	{
 		output = read_out(fd, &result);
 		// check_result
