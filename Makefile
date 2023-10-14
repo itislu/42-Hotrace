@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lbapart <lbapart@student.42.fr>            +#+  +:+       +#+         #
+#    By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 12:48:32 by ldulling          #+#    #+#              #
-#    Updated: 2023/10/14 14:45:28 by lbapart          ###   ########.fr        #
+#    Updated: 2023/10/14 19:29:47 by ldulling         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ cleanobjdir:				cleanobj
 							rm -rf $O
 
 clean:						cleandepdir cleanobjdir
+							rm -rf build/
 
 fclean:						clean
 							rm -f $(NAME)
