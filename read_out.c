@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_out.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aapenko <aapenko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 20:56:36 by lbapart           #+#    #+#             */
-/*   Updated: 2023/10/14 12:45:35 by ldulling         ###   ########.fr       */
+/*   Updated: 2023/10/14 13:12:47 by aapenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ char	*read_out(int fd, int *result)
 	int		i;
 	int		read_bytes;
 	int		total;
-	char	*buffer;
+	static char	*buffer;
 
-	buffer = (char *) malloc(BUFFERSIZE);
+	buffer = (char *) ft_realloc(BUFFERSIZE, ft_strlen(buffer));
 	if (!buffer)
 		return (set_result(result, MALLOC_ERR), NULL);
 	i = 0;

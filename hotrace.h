@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hotrace.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aapenko <aapenko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:17:46 by ldulling          #+#    #+#             */
-/*   Updated: 2023/10/14 12:55:40 by ldulling         ###   ########.fr       */
+/*   Updated: 2023/10/14 13:11:43 by aapenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 // DELETE
 #include <stdio.h>
 
-#define BUFFERSIZE INT_MAX
+#define BUFFERSIZE 300000
 #define MALLOC_ERR -2
 #define FD_ERR -1
 #define NOT_END_FILE 0
