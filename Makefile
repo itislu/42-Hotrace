@@ -6,7 +6,7 @@
 #    By: lbapart <lbapart@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 12:48:32 by ldulling          #+#    #+#              #
-#    Updated: 2023/10/14 14:40:41 by lbapart          ###   ########.fr        #
+#    Updated: 2023/10/14 14:45:28 by lbapart          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ O				=			build/obj/
 
 SRC				=			ft_calloc.c \
 							get_next_line.c \
+							utils.c \
 							main.c \
 							read_out.c \
 

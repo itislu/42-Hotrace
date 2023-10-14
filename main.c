@@ -18,8 +18,14 @@ int	main(void)
 	}
 	result = 0;
 	output = get_next_line(fd);
+	printf("%s", output);
 	while (output && result == 0)
 	{
+		if (output)
+		{
+			free(output);
+			output = NULL;
+		}
 		output = get_next_line(fd);
 		// check_result
 		// parse_output
