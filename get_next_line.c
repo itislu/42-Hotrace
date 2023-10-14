@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbapart <lbapart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aapenko <aapenko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 20:56:36 by lbapart           #+#    #+#             */
-/*   Updated: 2023/10/14 19:06:27 by lbapart          ###   ########.fr       */
+/*   Updated: 2023/10/14 19:24:09 by aapenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,15 @@ char	*ft_realloc(char **old_buf, char **c)
 	return (res);
 }
 
-int	delete_ouput(char	**buffer)
+int	delete_output(char	**buffer)
 {
 	int		i;
 	int		j;
 	char	*res;
 
 	i = 0;
+	if (!*buffer)
+		return (1);
 	while ((*buffer)[i] && (*buffer)[i] != '\n')
 		i++;
 	if ((*buffer)[i] == '\n')
@@ -110,7 +112,7 @@ char	*finish_get_next_line(char **buffer, int i)
 		j++;
 	}
 	res[j] = '\0';
-	if (!delete_ouput(buffer))
+	if (!delete_output(buffer))
 		return (free_buf(&res), NULL);
 	return (res);
 }
@@ -119,7 +121,7 @@ char	*get_next_line(int fd)
 {
 	int		read_bytes;
 	char	*temp;
-	static char	*buffer;
+	static char	*buffer = NULL;
 
 	temp = (char *)malloc(BUFFER_SIZE + 1);
 	if (!temp)
@@ -129,12 +131,13 @@ char	*get_next_line(int fd)
 	while (read_bytes > 0)
 	{
 		if (is_newline(buffer))
-			break ;
+			return (free(temp), finish_get_next_line(&buffer, ft_strlen(buffer)));
 		read_bytes = read(fd, temp, BUFFER_SIZE);
+		temp[read_bytes] = '\0';
 		if (read_bytes == -1)
 			return (free_buf(&buffer), free_buf(&temp), NULL);
 		else if (read_bytes == 0)
-			break ;
+			return (free(temp), finish_get_next_line(&buffer, ft_strlen(buffer)));
 		buffer = ft_realloc(&buffer, &temp);
 		if (!buffer)
 			return (NULL);
