@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+         #
+#    By: aapenko <aapenko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 12:48:32 by ldulling          #+#    #+#              #
-#    Updated: 2023/10/15 16:40:40 by ldulling         ###   ########.fr        #
+#    Updated: 2023/10/15 17:11:39 by aapenko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ I				=			./
 D				=			build/dep/
 O				=			build/obj/
 
-SRC				=			get_next_line.c \
-							get_next_line_2.c \
+SRC				=			free.c \
+							get_next_line.c \
 							hash.c \
 							lst_utils.c \
 							main.c \
@@ -24,7 +24,7 @@ SRC				=			get_next_line.c \
 							utils.c
 
 CC				=			cc
-CFLAGS			=			-Wall -Wextra -Werror -Ofast $(foreach X,$I,-I$(X))
+CFLAGS			=			-Wall -Wextra -Werror -O3 $(foreach X,$I,-I$(X))
 
 DEP				=			$(SRC:%.c=$D%.d)
 OBJ				=			$(SRC:%.c=$O%.o)

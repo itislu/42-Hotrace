@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hotrace.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aapenko <aapenko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:17:46 by ldulling          #+#    #+#             */
-/*   Updated: 2023/10/15 16:38:56 by ldulling         ###   ########.fr       */
+/*   Updated: 2023/10/15 17:32:49 by aapenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,22 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
+// free.c
+void			free_buf(char **buf);
+void			free_content(t_list *node);
+void			free_all(t_list **dict);
 // get_next_line.c
 char			*get_next_line(int fd);
-// get_next_line_2.c
 int				is_newline(char *str);
-void			free_buf(char **buf);
 char			*ft_realloc(char **old_buf, char **c);
 int				delete_output(char	**buffer);
 char			*end_get_next_line(char **buffer, int i);
 // hash.c
 int				put_key_and_val(char *key, char *value, int max,
-								t_list **array);
+					t_list **array);
 unsigned int	hash(const char *str, int max);
 int				find_in_keys(char *str, t_list *node);
-char	*get_value_from_key(char *str, int max, t_list **array);
+char			*get_value_from_key(char *str, int max, t_list **array);
 // lst_utils.c
 void			assign_node(t_list *node, char *key, char *value);
 // print.c
