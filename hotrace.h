@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hotrace.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aapenko <aapenko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:17:46 by ldulling          #+#    #+#             */
-/*   Updated: 2023/10/15 18:06:50 by ldulling         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:54:10 by aapenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <unistd.h>
 
 # define FD 0
-# define BUFFER_SIZE 120
-# define ARRAY_SIZE 1000000
+# define BUFFER_SIZE 128
+# define ARRAY_SIZE 524288
 
 typedef struct s_list
 {
