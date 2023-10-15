@@ -6,7 +6,7 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 23:20:33 by ldulling          #+#    #+#             */
-/*   Updated: 2023/10/15 14:17:17 by ldulling         ###   ########.fr       */
+/*   Updated: 2023/10/15 14:26:15 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	main(void)
 		return (1);
 	init_dict(dict);
 	count = 0;
-	int fd = open(PATH, O_RDONLY);
-	hotrace(dict, 0, &count, fd);
+// int fd = open(PATH, O_RDONLY);
+	hotrace(dict, 0, &count, FD);
 	free_all(dict);
 }
