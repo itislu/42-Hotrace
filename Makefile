@@ -6,7 +6,7 @@
 #    By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 12:48:32 by ldulling          #+#    #+#              #
-#    Updated: 2023/10/15 17:51:45 by ldulling         ###   ########.fr        #
+#    Updated: 2023/10/15 17:55:44 by ldulling         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,10 +40,10 @@ $(OBJ): $O%.o:				%.c | $O
 							$(CC) $(CFLAGS) -c $< -o $@
 
 $(DEP): $D%.d:				%.c | $D
-							$(CC) $(CFLAGS) -MM -MP -MF $@ -MT "$O$*.o $@" $<
+							@$(CC) $(CFLAGS) -MM -MP -MF $@ -MT "$O$*.o $@" $<
 
 $O $D:
-							mkdir -p $@
+							@mkdir -p $@
 
 cleandep:
 							rm -f $(wildcard $(DEP))
