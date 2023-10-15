@@ -6,7 +6,7 @@
 /*   By: aapenko <aapenko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:17:46 by ldulling          #+#    #+#             */
-/*   Updated: 2023/10/15 19:54:10 by aapenko          ###   ########.fr       */
+/*   Updated: 2023/10/15 20:29:23 by aapenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct s_list
 	char			*key;
 	char			*value;
 	struct s_list	*next;
+	int				key_len;
+	int				value_len;
 }					t_list;
 
 // free.c
