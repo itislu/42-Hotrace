@@ -6,7 +6,7 @@
 /*   By: aapenko <aapenko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 20:04:27 by aapenko           #+#    #+#             */
-/*   Updated: 2023/10/15 21:03:38 by aapenko          ###   ########.fr       */
+/*   Updated: 2023/10/15 21:08:34 by aapenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	print_value(char *str, char *temp)
 {
 	int	i;
-	int len;
+	int	len;
 
 	i = 0;
 	if (!str)
