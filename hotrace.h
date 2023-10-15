@@ -6,7 +6,7 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:17:46 by ldulling          #+#    #+#             */
-/*   Updated: 2023/10/15 14:29:57 by ldulling         ###   ########.fr       */
+/*   Updated: 2023/10/15 16:38:56 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 //# define PATH "tests/vitalii_small.txt"
 //# define PATH "tests/test.txt"
 
-# define BUFFER_SIZE 200
-# define ARRAY_SIZE 300000
+# define BUFFER_SIZE 120
+# define ARRAY_SIZE 1000000
 # define MALLOC_ERR -2
 # define FD_ERR -1
 # define NOT_END_FILE 0
@@ -48,10 +48,11 @@ char			*ft_realloc(char **old_buf, char **c);
 int				delete_output(char	**buffer);
 char			*end_get_next_line(char **buffer, int i);
 // hash.c
-int				put_key_and_val(char *key, char *value, int max, t_list *array);
+int				put_key_and_val(char *key, char *value, int max,
+								t_list **array);
 unsigned int	hash(const char *str, int max);
 int				find_in_keys(char *str, t_list *node);
-char			*get_value_from_key(char *str, int max, t_list *array);
+char	*get_value_from_key(char *str, int max, t_list **array);
 // lst_utils.c
 void			assign_node(t_list *node, char *key, char *value);
 // print.c
