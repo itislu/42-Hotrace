@@ -6,7 +6,7 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 20:04:27 by aapenko           #+#    #+#             */
-/*   Updated: 2023/10/14 23:25:16 by ldulling         ###   ########.fr       */
+/*   Updated: 2023/10/15 13:37:19 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	print_value(char *str, char *temp)
 
 	if (!str)
 	{
-		write(1, temp, ft_strlen(temp) - 1);
+		if (temp[ft_strlen(temp) - 1] != '\n')
+			write(1, temp, ft_strlen(temp));
+		else
+			write(1, temp, ft_strlen(temp) - 1);
 		write(1, ": Not found.\n", 13);
 		return ;
 	}

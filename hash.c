@@ -6,7 +6,7 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 21:49:28 by lbapart           #+#    #+#             */
-/*   Updated: 2023/10/14 23:34:52 by ldulling         ###   ########.fr       */
+/*   Updated: 2023/10/15 13:59:21 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ unsigned int	hash(const char *str, int max)
 	unsigned long	hash;
 
 	hash = 5381;
-	while (*str)
+	while (*str && *str != '\n')
 	{
 		hash = ((hash << 5) + hash) + *str;
 		str++;
@@ -38,19 +38,16 @@ unsigned int	hash(const char *str, int max)
 int	put_key_and_val(char *key, char *value, int max, t_list *array)
 {
 	unsigned int	index;
-	t_list			*temp;
+	t_list			temp;
 
 	index = hash(key, max);
 	if (!array[index].key)
 		assign_node(&array[index], key, value);
 	else
 	{
-		temp = (t_list *)malloc(sizeof(t_list));
-		if (!temp)
-			return (free(key), free(value), 0);
-		assign_node(temp, key, value);
-		temp->next = &array[index];
-		array[index] = *temp;
+		assign_node(&temp, key, value);
+		temp.next = &array[index];
+		array[index] = temp;
 	}
 	return (1);
 }
@@ -64,10 +61,12 @@ int	find_in_keys(char *str, t_list *node)
 	i = 0;
 	len = ft_strlen(str);
 	temp = node;
-	while (temp->key)
+	while (temp)
 	{
 		if (ft_strncmp(str, temp->key, len + 1) == 0)
+		{
 			return (i);
+		}
 		i++;
 		temp = temp->next;
 	}

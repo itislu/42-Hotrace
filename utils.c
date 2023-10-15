@@ -6,7 +6,7 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 14:44:49 by lbapart           #+#    #+#             */
-/*   Updated: 2023/10/14 23:27:52 by ldulling         ###   ########.fr       */
+/*   Updated: 2023/10/15 13:58:32 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,12 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	{
 		if (first[i] != second[i])
 		{
-			if (i + 1 == n && first[i + 1] == '\0'
-				&& second[i + 1] == '\n' && second[i + 2] == '\0')
-				return (0);
 			return (first[i] - second[i]);
 		}
 		i++;
 	}
+	if (!first[i] && second[i] == '\n' && second[i + 1] == '\0')
+		return (0);
 	if (i == n)
 		return (0);
 	return (first[i] - second[i]);
