@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aapenko <aapenko@student.42.fr>            +#+  +:+       +#+         #
+#    By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 12:48:32 by ldulling          #+#    #+#              #
-#    Updated: 2023/10/15 17:11:39 by aapenko          ###   ########.fr        #
+#    Updated: 2023/10/15 17:51:45 by ldulling         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ all:						$(NAME)
 $(NAME):					$(OBJ)
 							$(CC) $(CFLAGS) $^ -o $@
 
-$(OBJ): $O%.o:	%.c | $O
+$(OBJ): $O%.o:				%.c | $O
 							$(CC) $(CFLAGS) -c $< -o $@
 
 $(DEP): $D%.d:				%.c | $D
