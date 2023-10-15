@@ -6,21 +6,11 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 21:49:28 by lbapart           #+#    #+#             */
-/*   Updated: 2023/10/15 15:35:41 by ldulling         ###   ########.fr       */
+/*   Updated: 2023/10/15 18:07:11 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hotrace.h"
-
-// unsigned int hash(char *str, int max)
-// {
-// 	int h;
-
-// 	h = 0;
-// 	while (*str)
-// 		h = (h << 4) + *str++;
-// 	return (h % max);
-// }
 
 unsigned int	hash(const char *str, int max)
 {
