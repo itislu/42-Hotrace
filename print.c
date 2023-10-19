@@ -15,7 +15,7 @@
 void	print_value(char *str, char *temp)
 {
 	int	i;
-	int len;
+	int	len;
 
 	i = 0;
 	if (!str)

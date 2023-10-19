@@ -54,6 +54,8 @@ void	free_all(t_list **dict)
 				current = NULL;
 			}
 		}
+		else
+			break ;
 		i++;
 	}
 	free(dict);
