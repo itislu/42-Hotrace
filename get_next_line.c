@@ -85,7 +85,7 @@ int	delete_output(char	**buffer)
 	return (1);
 }
 
-char	*end_get_next_line(char **buffer, int i)
+char	*end_get_next_line(char **buffer, int i, int fd)
 {
 	char	*res;
 	int		j;
@@ -93,10 +93,10 @@ char	*end_get_next_line(char **buffer, int i)
 	if (i == 0)
 		return (free_buf(buffer), NULL);
 	i = 0;
-	while ((*buffer)[i] && (*buffer)[i] != '\n')
+	while ((*buffer)[i])
 		i++;
-	if ((*buffer)[i] == '\n')
-		i++;
+	if ((*buffer)[i - 1] != '\n')
+		close(fd);
 	res = (char *)malloc(i + 1);
 	if (!res)
 		return (free_buf(buffer), NULL);
@@ -122,7 +122,7 @@ char	*get_next_line(int fd)
 	while (read_bytes > 0)
 	{
 		if (is_newline(buffer))
-			return (end_get_next_line(&buffer, ft_strlen(buffer)));
+			return (end_get_next_line(&buffer, ft_strlen(buffer), fd));
 		temp = (char *)malloc(BUFFER_SIZE + 1);
 		if (!temp)
 			return (NULL);
@@ -130,12 +130,12 @@ char	*get_next_line(int fd)
 		read_bytes = read(fd, temp, BUFFER_SIZE);
 		if (read_bytes == -1)
 			return (free_buf(&buffer), free_buf(&temp), NULL);
-		else if (read_bytes == 0)
-			return (free(temp), end_get_next_line(&buffer, ft_strlen(buffer)));
 		temp[read_bytes] = '\0';
 		buffer = ft_realloc(&buffer, &temp);
 		if (!buffer)
 			return (NULL);
+		if (read_bytes < BUFFER_SIZE)
+			return (end_get_next_line(&buffer, ft_strlen(buffer), fd));
 	}
-	return (end_get_next_line(&buffer, ft_strlen(buffer)));
+	return (end_get_next_line(&buffer, ft_strlen(buffer), fd));
 }

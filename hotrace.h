@@ -38,7 +38,7 @@ char			*get_next_line(int fd);
 int				is_newline(char *str);
 char			*ft_realloc(char **old_buf, char **c);
 int				delete_output(char	**buffer);
-char			*end_get_next_line(char **buffer, int i);
+char			*end_get_next_line(char **buffer, int i, int fd);
 // hash.c
 int				put_key_and_val(char *key, char *value, int max,
 					t_list **array);
